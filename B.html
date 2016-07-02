@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Page B</title>
+  <script src='wechatOpt.js'></script>
+  <style>
+    body {
+      margin: 100px; auto;
+      font-size: 30px;
+      text-align: center;
+    }
+    .refresh {
+      margin-top: 200px;
+      font-size: 30px;
+    }
+  </style>
+</head>
+<body>
+  <div class="title">页面 B</div>
+  <button class="refresh">点此进行下一步操作</button>
+  <script>
+    document.querySelector('.refresh').addEventListener('click', function(){
+      var msg = '你现在使用的' + (WechatOpt.isAndroidWechat() ? '是' : '不是') + ' Android 浏览器，要重新加载吗？'
+      if(confirm(msg)){
+        if(WechatOpt.isAndroidWechat()){
+          WechatOpt.reload();
+        }
+        else {
+          location.reload();
+        }
+      }
+    });
+  </script>
+</body>
+</html>
